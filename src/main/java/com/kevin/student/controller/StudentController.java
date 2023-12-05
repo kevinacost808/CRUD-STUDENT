@@ -28,7 +28,7 @@ public class StudentController {
     public String openForm(Model model){
         model.addAttribute("student", new Student());
         model.addAttribute("action", "/student/newStudent");
-        return "form";
+        return "addForm";
     }
 
     @PostMapping("/newStudent")

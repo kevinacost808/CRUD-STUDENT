@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Students list</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous"
+    >
+</head>
+<body>
+    <h1>List:</h1>
+    <br>
+    <a class="btn btn-primary" href="/student/openForm" >NEW STUDENT</a>
+    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NAME</th>
+                <th scope="col">LAST NAME</th>
+                <th scope="col">AGE</th>
+                <th scope="col">EMAIL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student :${studentsList}">
+                <th scope="row" th:text="${student.id}"></th>
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.lastName}"></td>
+                <td th:text="${student.age}"></td>
+                <td th:text="${student.email}"></td>
+                <td>
+                    <a class="btn btn-warning" th:href="@{student/openFormEdit/{id}(id=${student.id})}">Edit</a>
+                    <a class="btn btn-danger" th:href="@{student/deleteStudent/{id}(id=${student.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
