@@ -38,14 +38,14 @@ public class StudentController {
     }
 
     @GetMapping("/openFormEdit/{id}")
-    public String openFormEdit(@PathVariable Long id, @ModelAttribute Student student, Model model){
-        model.addAttribute("student", student);
+    public String openFormEdit(@PathVariable Long id, Model model){
+        model.addAttribute("student", studentService.getStudentId(id));
         model.addAttribute("action", "/student/editStudent/"+id);
         return "editForm";
     }
 
     @PostMapping("/editStudent/{id}")
-    public String editStudent(@PathVariable Long id, @ModelAttribute Student student){
+    public String editStudent(@PathVariable Long id, @ModelAttribute("student") Student student){
         studentService.editStudent(id, student);
         return "redirect:/student";
     }
